@@ -10,12 +10,21 @@ class MyForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
-        children: const [
+        children: [
           MyTextFormField('id'),
           SizedBox(height: medium_gap),
           MyTextFormField('password'),
           SizedBox(height: large_gap),
+          TextButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                Navigator.pushNamed(context, '/home');
+              }
+            },
+            child: Text('Login'),
+          ),
         ],
       ),
     );
